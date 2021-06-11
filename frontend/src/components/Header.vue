@@ -8,7 +8,7 @@
 
 <style scoped>
     header {
-        padding: 40px;
+        padding: 10px;
         background-color: white;
         
     }
