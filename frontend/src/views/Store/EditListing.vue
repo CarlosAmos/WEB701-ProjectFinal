@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>Donate</h1>
+      <h1>Edit Listing</h1>
   </div>
 </template>
 
