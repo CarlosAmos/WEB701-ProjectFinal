@@ -42,33 +42,54 @@ const getAllUsers = async (req,res,next) => {
     }
 }
 //Get a user with email
-const getUser = async (req,res,next) => {
+
+
+
+//Get a user with ID
+const getUser = async (req, res, next) => {
     try {
         const id = req.params.id;
-        const listing = await firestore.collection('users').doc(id);
-        const data = await listing.get();
+        const user = await firestore.collection('users').doc(id);
+        const data = await user.get();
         if(!data.exists) {
             res.status(404).send('User not found');
         } else {
             res.send(data.data());
         }
     } catch (error) {
+            res.status(400).send(error.message);
+        }
+    }
+
+
+//Update user with ID
+const updateUser = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const data = req.body;
+        const user = await firestore.collection('users').doc(id);
+        await listing.update(data);
+        res.send('User updated successfully');
+    } catch (error) {
         res.status(400).send(error.message);
     }
 }
 
-
-//Get a user with ID
-
-
-//Update user with ID
-
-
 //Delete user with ID
-
+const deleteUser = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        await firestore.collection('users').doc(id).delete();
+        res.send('User deleted successfully')
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
 
 module.exports = {
 addUser,
 getAllUsers,
-getUser
+getUser,
+updateUser,
+deleteUser
 }
