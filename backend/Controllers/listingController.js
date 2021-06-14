@@ -30,6 +30,7 @@ const getAllListings = async (req, res, next) => {
                     doc.data().listingName,
                     doc.data().donator,
                     doc.data().itemQuantity,
+                    doc.data().items,
                     doc.data().description,
                     doc.data().donatorID
                 );
