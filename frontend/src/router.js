@@ -6,6 +6,7 @@ import Listing from './views/Store/Listing.vue';
 import Donate from './views/Donate';
 import EditListing from './views/Store/EditListing.vue';
 
+
 const router = new VueRouter({
     mode:'history',
     base: process.env.BASE_URL,
@@ -14,6 +15,7 @@ const router = new VueRouter({
         {path:'/Login', name: 'Login', component: Login},
         {path:'/Store', name: 'Store', component: Store},
         {path:'/Store/ViewListing', name: 'Listing', component: Listing},
+        {path:'/Store/EditListing', name: 'EditListing', component: EditListing},
         {path:'/Donate', name: 'Donate', component: Donate},
         {path:'/EditListing/EditListing', name: 'EditListing', component: EditListing},
     ]

@@ -48,7 +48,7 @@ export default {
 <style>
 .NavBar {
   width:90%;
-  background-color: cyan!important;
+  background-color: #0dc4e0!important;
   padding: 10px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -68,8 +68,9 @@ export default {
 }
 
 .NavLink {
-    font-size: 12px !important;
+    font-size: 14px !important;
   text-decoration: none !important;
+  color:#0dc4e0!important;
 }
 
 .DonateLink{
