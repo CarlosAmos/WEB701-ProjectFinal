@@ -23,7 +23,7 @@
     </v-card-text>
     <v-divider class="mx-4"></v-divider>
     <v-card-actions>
-      <v-btn>View Listing</v-btn>
+      <v-btn onclick='console()'><router-link class="buttonlink" :to="{ name: 'Listing', params: {id: item.id, post: post} }">View Listing</router-link></v-btn>
     </v-card-actions>
   </v-card>
   </b-list-group-item>
