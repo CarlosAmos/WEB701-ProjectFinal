@@ -14,7 +14,7 @@ const router = new VueRouter({
         {path:'/', name: 'Home', component: Home},
         {path:'/Login', name: 'Login', component: Login},
         {path:'/Store', name: 'Store', component: Store},
-        {path:'/Store/ViewListing/', name: 'Listing', component: Listing},
+        {path:'/Store/ViewListing/:id', name: 'Listing', component: Listing},
         {path:'/Store/EditListing', name: 'EditListing', component: EditListing},
         {path:'/Donate', name: 'Donate', component: Donate},
         {path:'/EditListing/EditListing', name: 'EditListing', component: EditListing},

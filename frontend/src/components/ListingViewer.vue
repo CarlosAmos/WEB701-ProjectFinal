@@ -1,15 +1,15 @@
 <template>
-  <div class="container">
+  <div class="container ">
       <h1>Listing</h1>
       <div>
 
           <!-- Listing listed here-->
 
-  <v-card :loading="loading" elevation='0' class="mx-auto my-12">
+  <v-card v-if="listing" elevation='0' class="mx-auto my-12">
     <template slot="progress">
       <v-progress-linear color="deep-purple" height="10" indeterminate></v-progress-linear>
     </template>
-    <v-card-title class='title'>{{$route.params.item.id}}<v-card-subtitle class='subtitle'>Donator Name</v-card-subtitle> </v-card-title>
+    <v-card-title class='title'>{{listing.listingName}}<v-card-subtitle class='subtitle'>{{listing.donator}}</v-card-subtitle> </v-card-title>
     <v-card-text>
 
       <div class="row">
@@ -18,11 +18,11 @@
 
         </div>
                 <div class="col-md-6 content">
-           Description of the Item/Package here
+           {{listing.description}}
            <br>
            <br>
            <h3>Items</h3>
-           List of items in listing
+           {{listing.items}}
         </div>
         </div>
     </v-card-text>
@@ -44,21 +44,25 @@ Vue.use(VueAxios,axios)
 export default {
   data()
   {
-    return {list:undefined}
+    return {listing: undefined}
   },
   mounted()
   {    
-    Vue.axios.get(`http://localhost:4200/api/listing/`)
+    Vue.axios.get(`http://localhost:4200/api/listing/${this.$route.params.id}`)
     .then((res)=>{
-      this.list=res.data;
-        console.warn(res.data)
+      this.listing=res.data;    
+      console.log(this.listing);
     })
-  },
-  methods: {
-      
+    }
   }
-}
+
 </script>
+
+<!-- 
+    .then((res)=>{
+      this.listing=res.data;    
+    })
+-->
 
 <style>
 .title{

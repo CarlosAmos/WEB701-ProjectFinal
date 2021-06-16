@@ -23,7 +23,7 @@
     </v-card-text>
     <v-divider class="mx-4"></v-divider>
     <v-card-actions>
-      <v-btn onclick='console()'><router-link class="buttonlink" :to="{ name: 'Listing', params: {id: item.id, post: post} }">View Listing</router-link></v-btn>
+      <v-btn><router-link class="buttonlink" :to="`/Store/ViewListing/${item.id}`">View Listing</router-link></v-btn>
     </v-card-actions>
   </v-card>
   </b-list-group-item>
@@ -48,7 +48,7 @@ export default {
     Vue.axios.get('http://localhost:4200/api/listings')
     .then((res)=>{
       this.list=res.data;
-        console.warn(res.data)
+        console.log(res.data)
     })
   }
 }
