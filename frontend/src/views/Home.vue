@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       <div class='row ContentTest'>
-        <h1>Banner Iamge</h1>
+        <h1></h1>
             <v-carousel
       :continuous="true"
       :cycle="cycle"
@@ -32,6 +32,7 @@
       </v-carousel-item>
     </v-carousel>
       </div>
+      <div class='row'><br></div>
       <div class='row'>
         <div class='col-lg-6 col-md-12 ContentTest'>
         <h2>About Us</h2>
@@ -103,8 +104,8 @@
 
 <style>
 .ContentTest {
-  background-color:yellow!important;
   border-width: 1px!important;
+  border-radius: 10px;
   border-style: solid;
 }
 

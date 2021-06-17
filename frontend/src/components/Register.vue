@@ -5,7 +5,7 @@
           <div class="col-lg-3">
           </div>
           <div class="col-lg-6 text">
-    <b-form @submit="onSubmit" v-if="show">
+    <b-form @submit.prevent="Register">
       <b-form-group
         id="input-group-1"
         label="Email address"
@@ -14,29 +14,37 @@
       >
         <b-form-input
           id="input-1"
-          v-model="form.email"
+          v-model="emailAddress"
           type="email"
           placeholder="Enter Emailddd"
           required
         ></b-form-input>
       </b-form-group>
         <br>
-        <br>
-
+            <b-form-group id="input-group-4" label="Your Full Name" label-for="input-4" class='label'>
+        <b-form-input
+          id="input-4"
+          v-model="fullName"
+          placeholder="Enter Full Name"
+          required
+        ></b-form-input>
+      </b-form-group>
+      <br>
       <b-form-group id="input-group-2" label="Your Password" label-for="input-2" class='label'>
         <b-form-input
           id="input-2"
-          v-model="form.password"
+          v-model="password"
           type="password"
           placeholder="Enter Password"
           required
         ></b-form-input>
       </b-form-group>
       <br>
-      <b-form-group id="input-group-3" label="Who would like to login as?" label-for="input-3">
+
+      <b-form-group id="input-group-3" label="What party do you belong to?" label-for="input-3">
         <b-form-select
           id="input-3"
-          v-model="form.party"
+          v-model="party"
           :options="loginas"          
           required
         ></b-form-select>
@@ -58,11 +66,16 @@
 </template>
 
 <script>
-  export default {
+//import axios from 'axios';
+import * as firebase from 'firebase';
+import "firebase/auth";
+
+  export default({
     data() {
       return {
         form: {
-          email: '',
+          emailAddress: '',
+          fullName: '',
           password: '',
           party: null
         },
@@ -71,12 +84,21 @@
       }
     },
     methods: {
-      onSubmit(event) {
-        event.preventDefault()
-        alert(JSON.stringify(this.form))
+      async Register(){
+        const data = {
+          id: this.emailAddress,
+          fullName: this.fullName,
+          emailAddress: this.emailAddress,
+          password: this.password,
+          party: this.party
+      };
+       const user = firebase.auth().createUserWithEmailAndPassword(data.emailAddress, data.password)
+       console.log(user)
+            .then(data => 
+            console.log(data));
       }
     }
-  }
+  })
 </script>
 
 <style scoped>
@@ -86,7 +108,7 @@
 }
 
 .label {
-    font-size: 27px;
+    font-size: 22px;
 }
 
 .buttons {
