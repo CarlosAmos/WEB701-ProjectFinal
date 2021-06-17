@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
+import LoginSelect from './views/LoginSelect.vue';
 import Store from './views/Store/Store.vue';
 import Listing from './views/Store/Listing.vue';
 import Donate from './views/Donate';
@@ -13,6 +14,7 @@ const router = new VueRouter({
     routes:[
         {path:'/', name: 'Home', component: Home},
         {path:'/Login', name: 'Login', component: Login},
+        {path:'/LoginSelect', name: 'LoginSelect', component: LoginSelect},
         {path:'/Store', name: 'Store', component: Store},
         {path:'/Store/ViewListing/:id', name: 'Listing', component: Listing},
         {path:'/Store/EditListing', name: 'EditListing', component: EditListing},
