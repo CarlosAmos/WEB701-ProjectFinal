@@ -16,7 +16,7 @@
           id="input-1"
           v-model="form.email"
           type="email"
-          placeholder="Enter Email"
+          placeholder="Enter Emailddd"
           required
         ></b-form-input>
       </b-form-group>
@@ -44,10 +44,7 @@
         <br>
 
       <md-card-actions>
-        <md-button class='md-primary md-raised login' type='submit'>Login</md-button>
-      </md-card-actions>
-            <md-card-actions>
-        <router-link class='md-primary md-raised login' to="/Register"><md-button class='login'>Register</md-button></router-link>
+        <md-button class='md-primary md-raised login' type='submit'>Register</md-button>
       </md-card-actions>
       <md-card-actions>
                 <md-button class='md-accent md-raised'>Cancel</md-button>

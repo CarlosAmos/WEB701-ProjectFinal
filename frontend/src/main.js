@@ -21,6 +21,22 @@ Vue.use(IconsPlugin)
 
 Vue.config.productionTip = false
 
+//Import for Firebase
+import firebase from 'firebase'
+import "@firebase/auth";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCXiyHB4D02Hlv30B80WlhfSe2VofRUEf4",
+  authDomain: "web701-proj.firebaseapp.com",
+  databaseURL: "https://web701-proj-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "web701-proj",
+  storageBucket: "web701-proj.appspot.com",
+  messagingSenderId: "326037915574",
+  appId: "1:326037915574:web:c165071c218a85f86d2317"
+};
+// init Firebase
+firebase.initializeApp(firebaseConfig);
+
 
 // Make BootstrapVue available throughout your project
 
