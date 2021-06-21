@@ -10,7 +10,10 @@ const beneRoutes = require('./Routes/beneRoutes')
 const app = express()
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    credentials: true, 
+    origin:['http://localhost:8080']
+}));
 app.use(bodyParser.json());
 
 app.use('/api', listingRoutes.routes);
