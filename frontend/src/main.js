@@ -3,7 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import router from './router.js'
 import store from './store/'
-
+import axios from './services/axios';
 //Import for vuetify
 import vuetify from './plugins/vuetify'
 
@@ -48,5 +48,6 @@ new Vue({
   vuetify,
   render: h => h(App),
   router,
-  store
+  store,
+  axios
 }).$mount('#app')

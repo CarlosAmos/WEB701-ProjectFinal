@@ -63,13 +63,14 @@ const getUser = async (req, res, next) => {
         const id = req.params.id;
         const user = await firestore.collection('users').doc(id);
         const data = await user.get();
-
         if(!data.exists) {
             res.status(404).send('User not found');
         } else {
             const token = jwt.sign({id: req.params.id}, "secret")
-            res.cookie('jwt', token, { httpOnly:true, maxAge: 24 * 60 * 60 * 1000});  //Used to calculate how long token will be valid for which this is 1 day
-            res.send({message: "Success"})
+            res.cookie('jwt', token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000});  //Used to calculate how long token will be valid for which this is 1 day
+            const userRes = data.data();        
+            
+            res.send({Message: "Logged In Successfully", token, userRes })
         }
     } catch (error) {
             res.status(400).send(error.message);
@@ -78,17 +79,23 @@ const getUser = async (req, res, next) => {
 
 //UserLogin
 
-const reqCookie = async (req, res, next) => {
-    const id = req.params.id;
-    const user = await firestore.collection('users').doc(id);
-    const data = await user.get();
+const reqCookie = async (req, res) => {
+    try{
     const cookie = req.cookies['jwt']
     const claims = jwt.verify(cookie, 'secret')
 
 if(!claims) {
-    return res.status(401).send({message:'unauthenticated'})
+    return res.status(401).send({message:'unauthenticated1'})
 }
-    res.send(data)
+
+const id = req.params.id;
+const user = await firestore.collection('users').doc(claims.id);
+const data = await user.get();
+
+res.send(data.data())
+}catch (e){
+    return res.status(401).send({message:'unauthenticated2'})
+}
 }
 
 //UserLogout

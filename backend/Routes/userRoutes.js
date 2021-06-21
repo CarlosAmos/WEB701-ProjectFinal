@@ -8,7 +8,7 @@ router.get('/users', getAllUsers);
 router.get('/user/:id',getUser);
 router.patch('/user/:id',updateUser);
 router.delete('/user/:id',deleteUser);
-router.get('./user/login/:id', reqCookie);
+router.get('/loggedin', reqCookie);
 router.post('/logout', userLogOut);
 
 module.exports = {

@@ -39,10 +39,14 @@
 </template>
 
 <script>
-
+import Vue from'vue';
 
 export default {
-
+  async created() {
+    Vue.axios.get('http://localhost:4200/api/loggedin', {headers: {
+      Authorization: 'Bearer' + localStorage.getItem('token')
+    }})
+  },
 }
 </script>
 

@@ -79,6 +79,8 @@
 
 
 <script>
+//import Vue from'vue';
+import axios from 'axios'
   export default {
     data () {
       return {
@@ -99,6 +101,13 @@
         ],
       }
     },
+      async created() {
+      
+      axios.get('http://localhost:4200/api/loggedin', {headers: {
+      Authorization: 'Bearer' + localStorage.getItem('token')
+    }, credentials: 'include'})
+
+  },
   }
 </script>
 

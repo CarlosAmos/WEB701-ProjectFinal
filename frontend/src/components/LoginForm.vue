@@ -5,20 +5,9 @@
           <div class="col-lg-3">
           </div>
           <div class="col-lg-6 text">
-    <b-form @submit.prevent="onSubmit" v-if="show">
-      <b-form-group
-        id="input-group-1"
-        label="Email address"
-        label-for="input-1"
-        class='label'
-      >
-        <b-form-input
-          id="input-1"
-          v-model="form.email"
-          type="email"
-          placeholder="Enter Email"
-          required
-        ></b-form-input>
+    <b-form @submit.prevent="Login" v-if="show">
+      <b-form-group id="input-group-1" label="Email address" label-for="input-1" class='label'>
+        <b-form-input id="input-1" v-model="emailAddress" type="email" placeholder="Enter Email" required></b-form-input>
       </b-form-group>
         <br>
         <br>
@@ -26,7 +15,7 @@
       <b-form-group id="input-group-2" label="Your Password" label-for="input-2" class='label'>
         <b-form-input
           id="input-2"
-          v-model="form.password"
+          v-model="password"
           type="password"
           placeholder="Enter Password"
           required
@@ -53,25 +42,50 @@
 </template>
 
 <script>
+import "firebase/auth";
+import Vue from 'vue';
+//import axios from 'axios';
+
   export default {
     data() {
       return {
-        form: {
           email: '',
-          password: ''
-        },
+          password: '',        
         loginas: [{ text: 'Select One', value: null }, 'Beneficiary', 'Donator'],
         show: true
       }
     },
+    mounted() {
+
+    },
     methods: {
-      onSubmit(event) {
-        event.preventDefault()
-        alert(JSON.stringify(this.form))
+      async Login() {
+        const data = {
+          id: this.emailAddress,
+          password: this.password
+        };
+        Vue.axios.get(`http://localhost:4200/api/user/${data.id}`, 
+        {credentials: 'include'})
+        .then((res) => {
+          console.log(res.data)
+          localStorage.setItem('token', res.data.token)
+          this.$router.push('/');
+        });
+        
+        
+        
       }
     }
   }
 </script>
+
+<!--         Vue.axios.get(`http://localhost:4200/api/user/${data.id}`, 
+        {credentials: 'include'})
+        .then((res) => {
+          console.log(res.data)
+          localStorage.setItem('token', res.data.token)
+          this.$router.push('/');
+        }); -->
 
 <style scoped>
 .text {
