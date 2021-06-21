@@ -23,7 +23,6 @@
         <li class="nav-item">
           <v-btn depressed elevation="2" rounded><router-link class="nav-link NavLink" to="/AboutUs">About Us</router-link></v-btn>
         </li>
-
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -40,6 +39,8 @@
 </template>
 
 <script>
+
+
 export default {
 
 }

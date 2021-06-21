@@ -5,29 +5,13 @@
           <div class="col-lg-3">
           </div>
           <div class="col-lg-6 text">
-    <b-form @submit.prevent="Register">
-      <b-form-group
-        id="input-group-1"
-        label="Email address"
-        label-for="input-1"
-        class='label'
-      >
-        <b-form-input
-          id="input-1"
-          v-model="emailAddress"
-          type="email"
-          placeholder="Enter Emailddd"
-          required
-        ></b-form-input>
+    <b-form class='inputform' @submit.prevent="GetEmail ">
+      <b-form-group id="input-group-1" label="Email address" label-for="emailAddress" class='label'>
+        <b-form-input v-model="emailAddress" type="email" placeholder="Enter Email Address" required></b-form-input>
       </b-form-group>
         <br>
             <b-form-group id="input-group-4" label="Your Full Name" label-for="input-4" class='label'>
-        <b-form-input
-          id="input-4"
-          v-model="fullName"
-          placeholder="Enter Full Name"
-          required
-        ></b-form-input>
+        <b-form-input id="input-4" v-model="fullName" placeholder="Enter Full Name" required></b-form-input>
       </b-form-group>
       <br>
       <b-form-group id="input-group-2" label="Your Password" label-for="input-2" class='label'>
@@ -66,24 +50,45 @@
 </template>
 
 <script>
-//import axios from 'axios';
-import * as firebase from 'firebase';
+//import * as firebase from 'firebase';
 import "firebase/auth";
+import Vue from 'vue'
+
 
   export default({
     data() {
       return {
-        form: {
+        
           emailAddress: '',
           fullName: '',
           password: '',
-          party: null
-        },
+          party: [],
+        
         loginas: [{ text: 'Select One', value: null }, 'Beneficiary', 'Donator'],
         show: true
       }
     },
     methods: {
+      async GetEmail(){
+        const data = {
+          id: this.emailAddress,
+          fullName: this.fullName,
+          emailAddress: this.emailAddress,
+          password: this.password,
+          party: this.party
+      };
+      Vue.axios.get(`http://localhost:4200/api/user/${data.emailAddress}`)
+      .then(() => {
+        console.log("User Exists")
+        alert("Email already in use")
+      })
+      .catch((err) => {
+        console.log(err)
+        Vue.axios.post('http://localhost:4200/api/user', data)
+        alert("Hello")
+      })
+      
+      },
       async Register(){
         const data = {
           id: this.emailAddress,
@@ -92,10 +97,16 @@ import "firebase/auth";
           password: this.password,
           party: this.party
       };
-       const user = firebase.auth().createUserWithEmailAndPassword(data.emailAddress, data.password)
-       console.log(user)
-            .then(data => 
-            console.log(data));
+      Vue.axios.post('http://localhost:4200/api/user', data)
+      .then(
+        res => {
+          console.log(res)
+        }
+      ).catch (
+        err => {
+          console.log(err)
+        }
+      )
       }
     }
   })

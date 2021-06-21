@@ -7,7 +7,7 @@ import Store from './views/Store/Store.vue';
 import Listing from './views/Store/Listing.vue';
 import Donate from './views/Donate';
 import EditListing from './views/Store/EditListing.vue';
-
+import News from './views/News.vue';
 
 const router = new VueRouter({
     mode:'history',
@@ -22,6 +22,7 @@ const router = new VueRouter({
         {path:'/Store/EditListing', name: 'EditListing', component: EditListing},
         {path:'/Donate', name: 'Donate', component: Donate},
         {path:'/EditListing/EditListing', name: 'EditListing', component: EditListing},
+        {path:'/News', name: 'News', component: News},
     ]
 })
 

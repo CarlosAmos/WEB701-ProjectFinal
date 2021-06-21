@@ -5,7 +5,7 @@
           <div class="col-lg-3">
           </div>
           <div class="col-lg-6 text">
-    <b-form @submit="onSubmit" v-if="show">
+    <b-form @submit.prevent="onSubmit" v-if="show">
       <b-form-group
         id="input-group-1"
         label="Email address"
@@ -33,14 +33,6 @@
         ></b-form-input>
       </b-form-group>
       <br>
-      <b-form-group id="input-group-3" label="Who would like to login as?" label-for="input-3">
-        <b-form-select
-          id="input-3"
-          v-model="form.party"
-          :options="loginas"          
-          required
-        ></b-form-select>
-      </b-form-group>
         <br>
 
       <md-card-actions>
@@ -66,8 +58,7 @@
       return {
         form: {
           email: '',
-          password: '',
-          party: null
+          password: ''
         },
         loginas: [{ text: 'Select One', value: null }, 'Beneficiary', 'Donator'],
         show: true
