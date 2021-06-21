@@ -78,6 +78,26 @@ const getUser = async (req, res, next) => {
 
 //UserLogin
 
+const reqCookie = async (req, res, next) => {
+    const id = req.params.id;
+    const user = await firestore.collection('users').doc(id);
+    const data = await user.get();
+    const cookie = req.cookies['jwt']
+    const claims = jwt.verify(cookie, 'secret')
+
+if(!claims) {
+    return res.status(401).send({message:'unauthenticated'})
+}
+    res.send(data)
+}
+
+//UserLogout
+const userLogOut = (req,res) => {
+    res.cookie('jwt','val',{maxAge:0})
+    res.send({message:'success'})
+}
+
+
 //Update user with ID
 const updateUser = async (req, res, next) => {
     try {
@@ -107,5 +127,7 @@ addUser,
 getAllUsers,
 getUser,
 updateUser,
-deleteUser
+deleteUser,
+reqCookie,
+userLogOut
 }
