@@ -70,8 +70,7 @@ import Vue from 'vue';
           if(res.data.password == data.password)
           {
             alert("Credentials Correct")
-            localStorage.setItem('userAccount', res.data.id)
-            console.log(localStorage.getItem('userAccount'));
+            localStorage.setItem('userAccount', res.data.id);
 
           } else {
             alert("Password was incorrect")

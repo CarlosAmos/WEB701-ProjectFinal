@@ -28,7 +28,14 @@
         <!-- Donate Button -->
         <v-btn depressed elevation="2" rounded class='DonateBut nav-link'><router-link class="nav-link DonateLink" to="/Donate">Donate</router-link></v-btn>
         <!-- Login Button -->
-        <!--<v-btn depressed elevation="2" rounded><router-link class="nav-link" to="/Login">Login</router-link></v-btn>-->
+        <div v-if="user.email">
+            <v-btn depressed elevation="2" rounded v-on:click="Logout()">Log Out</v-btn>
+        </div>
+        <div v-else>
+          <v-btn depressed elevation="2" rounded><router-link class="nav-link" to="/verifyUser">Login</router-link></v-btn>
+        </div>
+        
+        <!---->
       </form>
     </div>
   </div>
@@ -38,15 +45,26 @@
 </template>
 
 <script>
-import Vue from'vue';
 
 export default {
-  async created() {
-    Vue.axios.get('http://localhost:4200/api/loggedin', {headers: {
-      Authorization: 'Bearer' + localStorage.getItem('token')
-    }})
+data() {
+  return{
+    user: {
+      email: ''
+    },
+    renderComponent: true
+  }
+}, created () {
+  this.user.email = localStorage.getItem('userAccount');
+}, 
+methods: {
+  Logout() {
+    localStorage.removeItem('userAccount');
+    console.log(localStorage.getItem('userAccount'))
+    this.$forceUpdate();
   },
-}
+
+}}
 </script>
 
 <style>
