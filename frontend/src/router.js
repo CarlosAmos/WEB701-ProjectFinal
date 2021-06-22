@@ -8,6 +8,7 @@ import Listing from './views/Store/Listing.vue';
 import Donate from './views/Donate';
 import EditListing from './views/Store/EditListing.vue';
 import News from './views/News.vue';
+import verifyUser from './components/verifyUser.vue';
 
 const router = new VueRouter({
     mode:'history',
@@ -23,6 +24,7 @@ const router = new VueRouter({
         {path:'/Donate', name: 'Donate', component: Donate},
         {path:'/EditListing/EditListing', name: 'EditListing', component: EditListing},
         {path:'/News', name: 'News', component: News},
+        {path:'/VerifyUser', name: 'verifyUser', component: verifyUser},
     ]
 })
 

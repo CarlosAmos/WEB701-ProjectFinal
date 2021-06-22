@@ -5,7 +5,7 @@
         <b-list-group v-for="item in list" v-bind:key="item.id">
           <!-- Listing listed here-->
   <b-list-group-item>
-  <v-card :loading="loading" class="mx-auto my-12">
+  <v-card class="mx-auto my-12">
     <template slot="progress">
       <v-progress-linear color="deep-purple" height="10" indeterminate></v-progress-linear>
     </template>
@@ -48,7 +48,6 @@ export default {
     Vue.axios.get('http://localhost:4200/api/listings')
     .then((res)=>{
       this.list=res.data;
-        console.log(res.data)
     })
   }
 }

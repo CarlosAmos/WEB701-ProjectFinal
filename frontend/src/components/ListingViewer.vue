@@ -28,7 +28,7 @@
     </v-card-text>
     <v-divider class="mx-4"></v-divider>
     <v-card-actions>
-      <v-btn>Purchase</v-btn>
+      <v-btn><router-link class="buttonlink" to='/verifyUser'>Purchase</router-link></v-btn>
     </v-card-actions>
   </v-card>
 

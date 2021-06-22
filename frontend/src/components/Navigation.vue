@@ -25,11 +25,10 @@
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <!-- Donate Button -->
         <v-btn depressed elevation="2" rounded class='DonateBut nav-link'><router-link class="nav-link DonateLink" to="/Donate">Donate</router-link></v-btn>
         <!-- Login Button -->
-        <v-btn depressed elevation="2" rounded><router-link class="nav-link" to="/Login">Login</router-link></v-btn>
+        <!--<v-btn depressed elevation="2" rounded><router-link class="nav-link" to="/Login">Login</router-link></v-btn>-->
       </form>
     </div>
   </div>

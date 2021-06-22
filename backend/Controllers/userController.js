@@ -67,10 +67,9 @@ const getUser = async (req, res, next) => {
             res.status(404).send('User not found');
         } else {
             const token = jwt.sign({id: req.params.id}, "secret")
-            res.cookie('jwt', token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000});  //Used to calculate how long token will be valid for which this is 1 day
-            const userRes = data.data();        
+            res.cookie('jwt', token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000});  //Used to calculate how long token will be valid for which this is 1 day      
             
-            res.send({Message: "Logged In Successfully", token, userRes })
+            res.send(data.data())
         }
     } catch (error) {
             res.status(400).send(error.message);
