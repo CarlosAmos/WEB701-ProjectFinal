@@ -5,8 +5,9 @@ const bodyParser = require('body-parser');
 const config = require('./config');
 const listingRoutes = require('./Routes/listingRoutes');
 const userRoutes = require('./Routes/userRoutes');
-const beneRoutes = require('./Routes/beneRoutes')
-const cookieParser = require('cookie-parser')
+const beneRoutes = require('./Routes/beneRoutes');
+const tokenRoutes = require('./Routes/tokenRoutes');
+const cookieParser = require('cookie-parser');
 
 const app = express()
 
@@ -20,5 +21,6 @@ app.use(cookieParser())
 app.use('/api', listingRoutes.routes);
 app.use('/api', userRoutes.routes);
 app.use('/api', beneRoutes.routes);
+app.use('/api', tokenRoutes.routes);
 
 app.listen(config.port, () => console.log('App is listening on url http//localhost:' + config.port))

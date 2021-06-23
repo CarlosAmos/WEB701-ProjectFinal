@@ -5,13 +5,13 @@
           <div class="col-lg-3">
           </div>
           <div class="col-lg-6 text">
+              <h1>Login</h1>
     <b-form @submit.prevent="Login" v-if="show">
       <b-form-group id="input-group-1" label="Email address" label-for="input-1" class='label'>
         <b-form-input id="input-1" v-model="emailAddress" type="email" placeholder="Enter Email" required></b-form-input>
       </b-form-group>
         <br>
         <br>
-
       <b-form-group id="input-group-2" label="Your Password" label-for="input-2" class='label'>
         <b-form-input
           id="input-2"
@@ -23,7 +23,7 @@
       </b-form-group>
       <br>
         <br>
-
+        
       <md-card-actions>
         <md-button class='md-primary md-raised login' type='submit'>Login</md-button>
       </md-card-actions>
@@ -31,7 +31,7 @@
         <router-link class='md-primary md-raised login' to="/Register"><md-button class='login'>Register</md-button></router-link>
       </md-card-actions>
       <md-card-actions>
-                <md-button class='md-accent md-raised'>Cancel</md-button>
+                <router-link class='md-accent md-raised cancel' to="/Store"><md-button class='cancel'>Cancel</md-button></router-link>
       </md-card-actions>
     </b-form>
     </div>
@@ -49,7 +49,7 @@ import Vue from 'vue';
   export default {
     data() {
       return {
-          email: '',
+          emailAddress: '',
           password: '',        
         loginas: [{ text: 'Select One', value: null }, 'Beneficiary', 'Donator'],
         show: true
@@ -67,10 +67,20 @@ import Vue from 'vue';
         Vue.axios.get(`http://localhost:4200/api/user/${data.id}`, 
         {credentials: 'include'})
         .then((res) => {
-          console.log(res.data)
-          localStorage.setItem('token', res.data.token)
-          this.$router.push('/');
-        });
+          if(res.data.password == data.password)
+          {
+            alert("Credentials Correct")
+            localStorage.setItem('userAccount', res.data.id);
+
+          } else {
+            alert("Password was incorrect")
+          }
+        })
+        .catch(() => {
+            alert("Email entered does not exist")
+        })
+        
+        ;
         
         
         
@@ -78,14 +88,6 @@ import Vue from 'vue';
     }
   }
 </script>
-
-<!--         Vue.axios.get(`http://localhost:4200/api/user/${data.id}`, 
-        {credentials: 'include'})
-        .then((res) => {
-          console.log(res.data)
-          localStorage.setItem('token', res.data.token)
-          this.$router.push('/');
-        }); -->
 
 <style scoped>
 .text {
@@ -109,5 +111,11 @@ import Vue from 'vue';
 
 .login{
     background-color:#0dc4e0!important;
+    color:white!important;
+}
+
+.cancel{
+    background-color:red;
+    color:white!important;
 }
 </style>

@@ -27,9 +27,6 @@
       <md-card-actions>
         <md-button class='md-primary md-raised login' type='submit'>Login</md-button>
       </md-card-actions>
-            <md-card-actions>
-        <router-link class='md-primary md-raised login' to="/Register"><md-button class='login'>Register</md-button></router-link>
-      </md-card-actions>
       <md-card-actions>
                 <router-link class='md-accent md-raised cancel' to="/Store"><md-button class='cancel'>Cancel</md-button></router-link>
       </md-card-actions>
@@ -70,7 +67,7 @@ import Vue from 'vue';
           if(res.data.password == data.password)
           {
             alert("Credentials Correct")
-            localStorage.setItem('userAccount', res.data.id);
+            this.$router.push('verifyToken')
 
           } else {
             alert("Password was incorrect")

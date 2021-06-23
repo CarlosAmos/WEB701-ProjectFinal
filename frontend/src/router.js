@@ -9,6 +9,9 @@ import Donate from './views/Donate';
 import EditListing from './views/Store/EditListing.vue';
 import News from './views/News.vue';
 import verifyUser from './components/verifyUser.vue';
+import verifyToken from './components/verifyToken.vue';
+import Token from './components/Token.vue'
+import Profile from './views/Profile.vue'
 
 const router = new VueRouter({
     mode:'history',
@@ -24,7 +27,10 @@ const router = new VueRouter({
         {path:'/Donate', name: 'Donate', component: Donate},
         {path:'/EditListing/EditListing', name: 'EditListing', component: EditListing},
         {path:'/News', name: 'News', component: News},
-        {path:'/VerifyUser', name: 'verifyUser', component: verifyUser},
+        {path:'/verifyUser', name: 'verifyUser', component: verifyUser},
+        {path:'/verifyToken', name: 'verifyToken', component: verifyToken},
+        {path:'/Token', name: 'Token', component: Token},
+        {path:'/Profile', name: 'Profile', component: Profile},
     ]
 })
 
