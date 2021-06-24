@@ -12,6 +12,7 @@ import verifyUser from './components/verifyUser.vue';
 import verifyToken from './components/verifyToken.vue';
 import Token from './components/Token.vue'
 import Profile from './views/Profile.vue'
+import Admin from './views/Admin.vue'
 
 const router = new VueRouter({
     mode:'history',
@@ -31,6 +32,7 @@ const router = new VueRouter({
         {path:'/verifyToken', name: 'verifyToken', component: verifyToken},
         {path:'/Token', name: 'Token', component: Token},
         {path:'/Profile', name: 'Profile', component: Profile},
+        {path:'/Admin', name: 'Admin', component: Admin},
     ]
 })
 

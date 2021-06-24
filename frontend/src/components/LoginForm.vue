@@ -71,6 +71,8 @@ import Vue from 'vue';
           {
             alert("Credentials Correct")
             localStorage.setItem('userAccount', res.data.id);
+            localStorage.setItem('userParty', res.data.party);
+            this.$router.push('/')
 
           } else {
             alert("Password was incorrect")

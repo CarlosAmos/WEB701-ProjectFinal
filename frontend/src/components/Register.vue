@@ -85,7 +85,8 @@ import Vue from 'vue'
       .catch((err) => {
         console.log(err)
         Vue.axios.post('http://localhost:4200/api/user', data)
-        alert("Hello")
+        alert("Account successfully created!")
+        this.$router.push('/')
       })
       
       },

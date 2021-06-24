@@ -23,6 +23,9 @@
         <li class="nav-item">
           <v-btn depressed elevation="2" disabled rounded><router-link class="nav-link NavLink" to="/AboutUs">About Us</router-link></v-btn>
         </li>
+        <li class="nav-item" v-if="user.party == 'Admin'">
+          <v-btn depressed elevation="2" rounded><router-link class="nav-link NavLink" to="/Admin">Admin</router-link></v-btn>
+        </li>
       </ul>
       <form class="d-flex">
         <!-- Donate Button -->
@@ -51,17 +54,21 @@ export default {
 data() {
   return{
     user: {
-      email: ''
+      email: '',
+      party: ''
     },
     renderComponent: true
   }
 }, created () {
   this.user.email = localStorage.getItem('userAccount');
+  this.user.party = localStorage.getItem('userParty')
+      console.log(localStorage.getItem('userParty'))
 }, 
 methods: {
   Logout() {
     localStorage.removeItem('userAccount');
     console.log(localStorage.getItem('userAccount'))
+
     this.$forceUpdate();
   },
 

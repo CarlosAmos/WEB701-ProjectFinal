@@ -22,7 +22,7 @@
         <validation-provider
         v-slot="{ errors }"
         name="Your Name"
-        rules="required|max:10"
+        rules="required|max:60"
       >
         <v-text-field
           v-model="listingData.donator"
@@ -100,6 +100,7 @@ import axios from "axios"
           axios.post('http://localhost:4200/api/listing', this.listingData)
           .then(res=> console.log(res.data))
           .catch(err => console.log(err))
+          this.$router.push('/Store')
       },
       clear () {
         this.listingData.listingName = ''
