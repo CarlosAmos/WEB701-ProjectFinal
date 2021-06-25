@@ -61,14 +61,12 @@ data() {
   }
 }, created () {
   this.user.email = localStorage.getItem('userAccount');
-  this.user.party = localStorage.getItem('userParty')
-      console.log(localStorage.getItem('userParty'))
+  this.user.party = localStorage.getItem('userParty');
 }, 
 methods: {
   Logout() {
     localStorage.removeItem('userAccount');
-    console.log(localStorage.getItem('userAccount'))
-
+    localStorage.removeItem('userParty');
     this.$forceUpdate();
   },
 

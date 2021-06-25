@@ -32,6 +32,30 @@ const getToken = async (req,res,next) => {
     }
 }
 
+//Get all tokens
+const getAllTokens = async (req,res,next) => {
+    try {
+        const tokens = await firestore.collection('token');
+        const data = await tokens.get();
+        const tokensArray = [];
+        if(data.empty) {
+            res.status(404).send('No tokens found'); //
+        } else {
+            data.forEach(doc => {
+                const token = new Token(
+                    doc.id,
+                    doc.data().emailAddress,
+                    doc.data().listingID,
+                    doc.data().status
+                );
+                tokensArray.push(token);
+            });
+            res.send(tokensArray);
+        }
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
 
 //Update token
 const updateToken = async (req,res,next) => {
@@ -50,5 +74,6 @@ const updateToken = async (req,res,next) => {
 module.exports = {
     addToken,
     getToken,
-    updateToken
+    updateToken,
+    getAllTokens
 }

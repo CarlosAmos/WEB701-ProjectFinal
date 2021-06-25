@@ -103,7 +103,6 @@ const userLogOut = (req,res) => {
     res.send({message:'success'})
 }
 
-
 //Update user with ID
 const updateUser = async (req, res, next) => {
     try {

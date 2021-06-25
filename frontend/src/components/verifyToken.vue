@@ -40,19 +40,24 @@ methods: {
     const data = {
       id: this.id,
       emailAddress: localStorage.getItem('userAccount'),
-      listingID: localStorage.getItem('userAccount'),
+      listingID: localStorage.getItem('listingID'),
       status: 'Used'
     }
-    Vue.axios.get(`http://localhost:4200/api/token/${data.id}`)
+    var checktoken = " " + data.id
+    Vue.axios.get(`http://localhost:4200/api/token/${checktoken}`)
     .then((res) => {
         if(res.data.status == 'Used')
         {
-          console.log('Token has already been used')
+          alert("Token has already been used")
         } else {
-          console.log('Success')
+          alert("Purchase successful. You can view the order in your profile")
+          Vue.axios.post(`http://localhost:4200/api/token/${checktoken}`, data)
+          this.$router.push('/profile')
+          localStorage.removeItem('listingID');
         }
     }).catch(() => {
       alert("Token entered does not exist")
+      console.log(data)
     })
   }
 }

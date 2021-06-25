@@ -22,7 +22,6 @@ export default {
       Authorization: 'Bearer' + localStorage.getItem('token')
     }})
 
-    console.log(localStorage.getItem('token'))
   },
   data: () => ({
 

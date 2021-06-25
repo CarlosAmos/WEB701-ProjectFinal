@@ -50,7 +50,8 @@ export default {
   {    
     Vue.axios.get(`http://localhost:4200/api/listing/${this.$route.params.id}`)
     .then((res)=>{
-      this.listing=res.data;    
+      this.listing=res.data;
+      localStorage.setItem('listingID', this.$route.params.id);    
       console.log(this.listing);
     })
     }
