@@ -23,6 +23,13 @@ export default {
 
 
   },
+  mounted(){
+    //Clear local storage when website is closed.
+    window.onbeforeunload = function () {
+      var storage = window.localStorage;
+      storage.clear();
+    }
+  },
   data: () => ({
 
   }),
