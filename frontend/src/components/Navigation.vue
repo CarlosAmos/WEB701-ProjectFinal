@@ -17,7 +17,7 @@
         </li>
         <!-- News Link -->
         <li class="nav-item">
-          <v-btn depressed elevation="2" disabled rounded><router-link class="nav-link NavLink" to="/News">News</router-link></v-btn>
+          <v-btn depressed elevation="2" rounded><router-link class="nav-link NavLink" to="/News">News</router-link></v-btn>
         </li>
         <!-- About Us Link -->
         <li class="nav-item">
@@ -36,7 +36,7 @@
             <v-btn depressed elevation="2" rounded v-on:click="Logout()">Log Out</v-btn>
         </div>
         <div v-else>
-          <v-btn depressed elevation="2" rounded><router-link class="nav-link" to="/Login">Login</router-link></v-btn>
+          <v-btn depressed elevation="2" rounded><router-link class="nav-link NavLink" to="/Login">Login</router-link></v-btn>
         </div>
         
         <!---->
@@ -84,6 +84,11 @@ methods: {
 
 .NavBarButton {
   padding-left: 10px;
+}
+
+.navbar-brand {
+  color: white!important;
+  text-decoration: none !important;
 }
 
 .NavRight {

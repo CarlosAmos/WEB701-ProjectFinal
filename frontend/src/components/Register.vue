@@ -78,8 +78,7 @@ import Vue from 'vue'
           party: this.party
       };
       Vue.axios.get(`http://localhost:4200/api/user/${data.emailAddress}`)
-      .then(() => {
-        console.log("User Exists")
+      .then(() => {        
         alert("Email already in use. Please login on the login page.")
       })
       .catch((err) => {

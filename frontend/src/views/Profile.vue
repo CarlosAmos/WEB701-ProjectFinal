@@ -16,8 +16,8 @@
           </div>
           <div class='row'>
            <div class='col-4'>
-             <v-btn disabled class='buttons'> Change Profile Pic </v-btn>
-             <v-btn class='buttons' v-on:click="component ='purchases-card'">View Purchases</v-btn>
+             <v-btn disabled class='buttons'> Change Profile Pic - Coming Soon </v-btn>
+             <v-btn disabled class='buttons' v-on:click="component ='purchases-card'">View Purchases - Coming Soon</v-btn>
              <br>
              <div v-if="user.party == 'Beneficiary'">
              <v-btn class='buttons' v-on:click="component ='token-card'">Show Tokens</v-btn>

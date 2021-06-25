@@ -98,7 +98,7 @@ import axios from "axios"
       },
       createListing () {
           axios.post('http://localhost:4200/api/listing', this.listingData)
-          .then(res=> console.log(res.data))
+          .then()
           .catch(err => console.log(err))
           this.$router.push('/Store')
       },

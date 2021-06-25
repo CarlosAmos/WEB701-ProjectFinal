@@ -3,13 +3,17 @@
   <h1>News</h1>
   <div class='row'>
       <div class='col-9 borders'>
-          News Here
+          <h4> News </h4>
       </div>
             <div class='col-1'>
 
       </div>
       <div class='col-2 borders'>
-          Upcoming events here
+          <h6>Upcoming events</h6>
+          - No upcoming events -
+          <br>
+          <br>
+          - Check here later -
       </div>
   </div>
   </div>

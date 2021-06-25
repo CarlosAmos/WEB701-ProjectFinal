@@ -53,8 +53,8 @@ methods: {
             if(res.data.party == 'Beneficiary')
             {
                 Vue.axios.post('http://localhost:4200/api/token', data)
-                .then((res) => {
-                    console.log(res.data)
+                .then(() => {
+                    
                 })
             } else {
                 alert("Tokens can only be generated for beneficaries")

@@ -3,24 +3,24 @@
 <Navigation></Navigation>
 <Header></Header> 
 <router-view></router-view>
+<Footer></Footer>
 </div>
 </template>
 
 <script>
 import Navigation from './components/Navigation.vue';
 import Header from './components/Header.vue';
-import Vue from'vue';
+import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
   components: {
     Navigation,
-    Header
+    Header,
+    Footer
   },
   async created() {
-    Vue.axios.get('http://localhost:4200/api/loggedin', {headers: {
-      Authorization: 'Bearer' + localStorage.getItem('token')
-    }})
+
 
   },
   data: () => ({
