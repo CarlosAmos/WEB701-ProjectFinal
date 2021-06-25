@@ -2,7 +2,7 @@
   <div class='container'>
       <div class='row'>
         <div class='col-12'>
-          <h5>Be sure to write down the codes. Can be used for purchase</h5>
+          <h5>Be sure to write down the codes. Can be used for purchasing products</h5>
         <b-list-group v-for="token in list" v-bind:key="token.id">
           <div class='col-4'>
             Token: {{token.id}} - {{token.status}}

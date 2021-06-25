@@ -17,16 +17,16 @@
           <div class='row'>
            <div class='col-4'>
              <v-btn disabled class='buttons'> Change Profile Pic </v-btn>
-             <v-btn class='buttons'>View Purchases</v-btn>
+             <v-btn class='buttons' v-on:click="component ='purchases-card'">View Purchases</v-btn>
              <br>
              <div v-if="user.party == 'Beneficiary'">
-             <v-btn class='buttons' v-on:click="component ='token-card'" v-if="component = ''">Show Tokens</v-btn>
-             <v-btn class='buttons' v-on:click="component = ''" v-if="component = 'token-card'">Hide Tokens</v-btn>
-              <component v-bind:is="component"></component>
+             <v-btn class='buttons' v-on:click="component ='token-card'">Show Tokens</v-btn>
+              
              </div>
-          </div>
+             
+          </div>          
           <div class='col-8'>
-
+            <component v-bind:is="component"></component>
 
 
           </div>
@@ -39,11 +39,13 @@
 
 <script>
 import TokenCard from '../components/Token.vue'
+import PurchasesCard from '../components/Purchases.vue'
 import Vue from 'vue'
 
 export default {
   components: {
-    'token-card': TokenCard
+    'token-card': TokenCard,
+    'purchases-card': PurchasesCard
   },
 data() {
   return {
